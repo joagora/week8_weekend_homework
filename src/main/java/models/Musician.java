@@ -1,7 +1,6 @@
 package models;
 
 import javax.persistence.Entity;
-import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
 @Entity

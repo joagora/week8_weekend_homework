@@ -1,6 +1,8 @@
 package models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -11,12 +13,12 @@ public abstract class FilmArtist {
     private int id;
     private String name;
     private double cash;
-//    private List<Award> awards;
+    private List<Award> awards;
 
     public FilmArtist(String name, double cash) {
         this.name = name;
         this.cash = cash;
-//        this.awards = new ArrayList<Award>();
+        this.awards = new ArrayList<Award>();
     }
 
     public FilmArtist() {
@@ -51,12 +53,12 @@ public abstract class FilmArtist {
         this.cash = cash;
     }
 
+    @OneToMany(mappedBy = "artist", fetch = FetchType.LAZY)
+    public List<Award> getAwards() {
+        return awards;
+    }
 
-//    public List<Award> getAwards() {
-//        return awards;
-//    }
-//
-//    public void setAwards(List<Award> awards) {
-//        this.awards = awards;
-//    }
+    public void setAwards(List<Award> awards) {
+        this.awards = awards;
+    }
 }

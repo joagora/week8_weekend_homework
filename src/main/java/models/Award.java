@@ -9,6 +9,7 @@ public class Award {
     private int id;
     private AwardType awardType;
     private CategoryType category;
+    private FilmArtist artist;
 
     public Award(AwardType awardType, CategoryType category) {
         this.awardType = awardType;
@@ -42,5 +43,15 @@ public class Award {
 
     public void setCategory(CategoryType category) {
         this.category = category;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "artist_id", nullable = true)
+    public FilmArtist getArtist() {
+        return artist;
+    }
+
+    public void setArtist(FilmArtist artist) {
+        this.artist = artist;
     }
 }

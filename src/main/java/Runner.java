@@ -1,8 +1,5 @@
 import db.DBHelper;
-import models.Actor;
-import models.Director;
-import models.Film;
-import models.Studio;
+import models.*;
 
 public class Runner {
 
@@ -19,6 +16,7 @@ public class Runner {
         Film filmHobbit = new Film("Hobbit", 2000000.00, directorJackson, studioBross);
         DBHelper.save(filmHobbit);
 
-
+        Award award = new Award(AwardType.BRITISH_ACADEMY, CategoryType.BEST_ACTRESS);
+        DBHelper.save(award);
     }
 }
