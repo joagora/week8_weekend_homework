@@ -1,5 +1,9 @@
 package models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "awards")
 public class Award {
 
     private int id;
@@ -11,6 +15,9 @@ public class Award {
         this.category = category;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -19,6 +26,7 @@ public class Award {
         this.id = id;
     }
 
+    @Enumerated(value = EnumType.STRING)
     public AwardType getAwardType() {
         return awardType;
     }
@@ -27,6 +35,7 @@ public class Award {
         this.awardType = awardType;
     }
 
+    @Enumerated(value = EnumType.STRING)
     public CategoryType getCategory() {
         return category;
     }

@@ -1,8 +1,11 @@
 package models;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "studios")
 public class Studio {
 
     private int id;
@@ -14,6 +17,9 @@ public class Studio {
         this.productions = new ArrayList<Film>();
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -22,6 +28,7 @@ public class Studio {
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -29,6 +36,7 @@ public class Studio {
     public void setName(String name) {
         this.name = name;
     }
+
 
     public List<Film> getProductions() {
         return productions;
