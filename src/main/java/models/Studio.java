@@ -37,7 +37,7 @@ public class Studio {
         this.name = name;
     }
 
-
+    @OneToMany(mappedBy = "studio", fetch = FetchType.LAZY)
     public List<Film> getProductions() {
         return productions;
     }

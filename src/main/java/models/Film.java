@@ -1,5 +1,7 @@
 package models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,11 +14,13 @@ public class Film {
     private String title;
     private Director director;
     private List<Actor> cast;
+    private Studio studio;
 
-    public Film(double budget, String title, Director director) {
+    public Film(String title, double budget, Director director, Studio studio) {
         this.budget = budget;
         this.title = title;
         this.director = director;
+        this.studio = studio;
     }
 
     @Id
@@ -48,7 +52,8 @@ public class Film {
         this.title = title;
     }
 
-    @Column(name = "director")
+    @ManyToOne
+    @JoinColumn(name = "director_id")
     public Director getDirector() {
         return director;
     }
@@ -57,12 +62,27 @@ public class Film {
         this.director = director;
     }
 
-    @Column(name = "cast")
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @ManyToMany
+    @JoinTable(
+            name = "actors_films",
+            joinColumns = {@JoinColumn(name = "film_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "actor_id", nullable = false, updatable = false)})
     public List<Actor> getCast() {
         return cast;
     }
 
     public void setCast(List<Actor> cast) {
         this.cast = cast;
+    }
+
+    @ManyToOne
+    @JoinColumn(name ="studio_id", nullable = false)
+    public Studio getStudio() {
+        return studio;
+    }
+
+    public void setStudio(Studio studio) {
+        this.studio = studio;
     }
 }

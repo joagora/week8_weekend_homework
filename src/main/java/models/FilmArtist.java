@@ -1,24 +1,22 @@
 package models;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Entity
 @Table(name = "film_artists")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class FilmArtist {
 
     private int id;
     private String name;
     private double cash;
-    private List<Film> films;
-    private List<Award> awards;
+//    private List<Award> awards;
 
     public FilmArtist(String name, double cash) {
         this.name = name;
         this.cash = cash;
-        this.awards = new ArrayList<Award>();
-        this.films = new ArrayList<Film>();
+//        this.awards = new ArrayList<Award>();
     }
 
     public FilmArtist() {
@@ -54,19 +52,11 @@ public abstract class FilmArtist {
     }
 
 
-    public List<Film> getFilms() {
-        return films;
-    }
-
-    public void setFilms(List<Film> films) {
-        this.films = films;
-    }
-
-    public List<Award> getAwards() {
-        return awards;
-    }
-
-    public void setAwards(List<Award> awards) {
-        this.awards = awards;
-    }
+//    public List<Award> getAwards() {
+//        return awards;
+//    }
+//
+//    public void setAwards(List<Award> awards) {
+//        this.awards = awards;
+//    }
 }
