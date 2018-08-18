@@ -38,6 +38,8 @@ public class Runner {
 
         List<Film> foundFilms = DBActor.getFilmsForActor(actorWood);
         List<Actor> foundActors = DBFilm.getActorsForFilm(filmHobbit);
+        List<Film> dramaFilms = DBFilm.getFilmsByGenre(GenreType.DRAMA);
+        List<Film> actionFilms = DBFilm.getFilmsByGenre(GenreType.ACTION);
     }
 }
 
