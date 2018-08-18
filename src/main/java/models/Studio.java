@@ -17,6 +17,8 @@ public class Studio {
         this.productions = new ArrayList<Film>();
     }
 
+    public Studio(){}
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

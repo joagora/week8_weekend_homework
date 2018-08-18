@@ -10,22 +10,18 @@ import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
-public class DBActor {
+public class DBFilm {
+
     private static Session session;
 
-    public static void addActorToFilm(Film film, Actor actor) {
-        actor.addFilmToActor(film);
-        DBHelper.update(actor);
-    }
-
-    public static List<Film> getFilmsForActor(Actor actor) {
+    public static List<Actor> getActorsForFilm(Film film) {
         session = HibernateUtil.getSessionFactory().openSession();
-        List<Film> results = null;
+        List<Actor> results = null;
         try {
-            Criteria cr = session.createCriteria(Film.class);
-            cr.createAlias("actors", "actor");
-            cr.add(Restrictions.eq("actor.id", actor.getId()));
-            results = cr.list();
+            Criteria cr = session.createCriteria(Actor.class);
+            cr.createAlias("films", "film");
+            cr.add(Restrictions.eq("film.id", film.getId()));
+        results = cr.list();
         } catch (HibernateException ex) {
             ex.printStackTrace();
         } finally {
@@ -35,7 +31,4 @@ public class DBActor {
         return results;
 
     }
-
-
-
 }

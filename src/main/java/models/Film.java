@@ -1,7 +1,6 @@
 package models;
 
 import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,14 +15,18 @@ public class Film {
     private Director director;
     private List<Actor> actors;
     private Studio studio;
+    private GenreType genre;
 
-    public Film(String title, double budget, Director director, Studio studio) {
+    public Film(String title, double budget, Director director, Studio studio, GenreType genre) {
         this.budget = budget;
         this.title = title;
         this.director = director;
         this.studio = studio;
         this.actors = new ArrayList<Actor>();
+        this.genre = genre;
+    }
 
+    public Film() {
     }
 
     @Id
@@ -89,7 +92,14 @@ public class Film {
         this.studio = studio;
     }
 
-    public void addActorToFilm(Actor actor){
-        this.actors.add(actor);
+    @Enumerated(value = EnumType.STRING)
+    public GenreType getGenre() {
+        return genre;
     }
+
+    public void setGenre(GenreType genre) {
+        this.genre = genre;
+    }
+
+
 }
