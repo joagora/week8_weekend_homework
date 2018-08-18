@@ -34,4 +34,5 @@ public class Actor extends FilmArtist{
     public void setStarredFilms(List<Film> starredFilms) {
         this.starredFilms = starredFilms;
     }
+
 }

@@ -1,3 +1,4 @@
+import db.DBActor;
 import db.DBHelper;
 import models.*;
 
@@ -18,5 +19,9 @@ public class Runner {
 
         Award award = new Award(AwardType.BRITISH_ACADEMY, CategoryType.BEST_ACTRESS);
         DBHelper.save(award);
+
+        DBActor.addActorToFilm(filmHobbit, actorRoberts);
     }
 }
+
+
